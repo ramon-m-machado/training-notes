@@ -19,4 +19,4 @@ model.add(tf.keras.layers.Dense(10, activation='sigmoid'))
 
 model.fit(training_images, training_labels, epochs=10, validation_data=(testing_images, testing_labels))
 ```
-loss: 1.2520 - accuracy: 0.7121
+loss: 2.0531 - accuracy: 0.6970
