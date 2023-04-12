@@ -22,7 +22,7 @@ model.fit(training_images, training_labels, epochs=10, validation_data=(testing_
 loss: 2.0531 - accuracy: 0.6970
 
 ### 2023-04-12
-using softmax activation
+using softmax activation and size of image = 250
 ```python
 model = tf.keras.models.Sequential()
 model.add(tf.keras.layers.Conv2D(size, (3,3), activation='relu', input_shape=(size,size,1)))
