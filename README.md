@@ -102,6 +102,7 @@ https://github.com/google-research/interpretability-theory
 https://www.kaggle.com/code/shivamb/cnn-architectures-vgg-resnet-inception-tl
 
 ### Training CNN Architectures : AlexNet, VGG, ResNet, Inception
+#### AlexNet
 
 ```python
 model = tf.keras.models.Sequential([
@@ -133,3 +134,85 @@ model.summary()
 model.fit(training_images, training_labels, epochs=50, validation_data=(testing_images, testing_labels), validation_freq=1)
 ```
 loss: 1.7844 - accuracy: 0.4091
+
+#### VGG19
+
+```python
+model = tf.keras.models.Sequential()
+
+# Block 1
+model.add(tf.keras.layers.Conv2D(64, (3, 3), activation='relu', padding='same', input_shape=(size, size, 1)))
+model.add(tf.keras.layers.Conv2D(64, (3, 3), activation='relu', padding='same'))
+model.add(tf.keras.layers.MaxPooling2D((2, 2), strides=(2, 2)))
+
+# Block 2
+model.add(tf.keras.layers.Conv2D(128, (3, 3), activation='relu', padding='same'))
+model.add(tf.keras.layers.Conv2D(128, (3, 3), activation='relu', padding='same'))
+model.add(tf.keras.layers.MaxPooling2D((2, 2), strides=(2, 2)))
+
+# Block 3
+model.add(tf.keras.layers.Conv2D(256, (3, 3), activation='relu', padding='same'))
+model.add(tf.keras.layers.Conv2D(256, (3, 3), activation='relu', padding='same'))
+model.add(tf.keras.layers.Conv2D(256, (3, 3), activation='relu', padding='same'))
+model.add(tf.keras.layers.Conv2D(256, (3, 3), activation='relu', padding='same'))
+model.add(tf.keras.layers.MaxPooling2D((2, 2), strides=(2, 2)))
+
+# Block 4
+model.add(tf.keras.layers.Conv2D(512, (3, 3), activation='relu', padding='same'))
+model.add(tf.keras.layers.Conv2D(512, (3, 3), activation='relu', padding='same'))
+model.add(tf.keras.layers.Conv2D(512, (3, 3), activation='relu', padding='same'))
+model.add(tf.keras.layers.Conv2D(512, (3, 3), activation='relu', padding='same'))
+model.add(tf.keras.layers.MaxPooling2D((2, 2), strides=(2, 2)))
+
+# Block 5
+model.add(tf.keras.layers.Conv2D(512, (3, 3), activation='relu', padding='same'))
+model.add(tf.keras.layers.Conv2D(512, (3, 3), activation='relu', padding='same'))
+model.add(tf.keras.layers.Conv2D(512, (3, 3), activation='relu', padding='same'))
+model.add(tf.keras.layers.Conv2D(512, (3, 3), activation='relu', padding='same'))
+model.add(tf.keras.layers.MaxPooling2D((2, 2), strides=(2, 2)))
+
+# Classification block
+model.add(tf.keras.layers.Flatten())
+model.add(tf.keras.layers.Dense(4096, activation='relu'))
+model.add(tf.keras.layers.Dropout(0.5))
+model.add(tf.keras.layers.Dense(4096, activation='relu'))
+model.add(tf.keras.layers.Dropout(0.5))
+model.add(tf.keras.layers.Dense(10, activation='softmax'))
+
+
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+model.fit(training_images, training_labels, epochs=25, validation_data=(testing_images, testing_labels))
+```
+loss: 2.2375 - accuracy: 0.1515
+
+#### InceptionNet
+
+```python
+model = tf.keras.models.Sequential()
+
+# First Inception block
+model.add(tf.keras.layers.Conv2D(64, (1,1), padding='same', activation='relu', input_shape=(size, size, 1)))
+model.add(tf.keras.layers.Conv2D(96, (1,1), padding='same', activation='relu'))
+model.add(tf.keras.layers.Conv2D(128, (3,3), padding='same', activation='relu'))
+model.add(tf.keras.layers.Conv2D(16, (1,1), padding='same', activation='relu'))
+model.add(tf.keras.layers.Conv2D(32, (5,5), padding='same', activation='relu'))
+model.add(tf.keras.layers.MaxPooling2D((3,3), strides=(1,1), padding='same'))
+model.add(tf.keras.layers.Conv2D(32, (1,1), padding='same', activation='relu'))
+
+# Second Inception block
+model.add(tf.keras.layers.Conv2D(128, (1,1), padding='same', activation='relu'))
+model.add(tf.keras.layers.Conv2D(128, (1,1), padding='same', activation='relu'))
+model.add(tf.keras.layers.Conv2D(192, (3,3), padding='same', activation='relu'))
+model.add(tf.keras.layers.Conv2D(32, (1,1), padding='same', activation='relu'))
+model.add(tf.keras.layers.Conv2D(96, (5,5), padding='same', activation='relu'))
+model.add(tf.keras.layers.MaxPooling2D((3,3), strides=(1,1), padding='same'))
+model.add(tf.keras.layers.Conv2D(64, (1,1), padding='same', activation='relu'))
+
+# Output layers
+model.add(tf.keras.layers.Flatten())
+model.add(tf.keras.layers.Dense(10, activation='softmax'))
+```
+loss: 2.2358 - accuracy: 0.1515
+
+
+
