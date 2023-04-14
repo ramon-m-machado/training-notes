@@ -98,3 +98,5 @@ https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/ModelCheckpoint
 https://www.tensorflow.org/guide/profiler?hl=pt-br
 
 https://github.com/google-research/interpretability-theory
+
+https://www.kaggle.com/code/shivamb/cnn-architectures-vgg-resnet-inception-tl
