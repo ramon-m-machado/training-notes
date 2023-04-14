@@ -88,4 +88,13 @@ loss: 0.9315 - accuracy: 0.7727
 ### 2023-04-13
 #### Notes on the [tuning playbook](https://github.com/google-research/tuning_playbook) that may be useful for the project.
 
+#### Batch-size:
+Often, the ideal batch size will be the largest batch size supported by the available hardware.
 
+#### Checkpoint model or weights:
+https://www.tensorflow.org/api_docs/python/tf/keras/callbacks/ModelCheckpoint
+
+#### See later 
+https://www.tensorflow.org/guide/profiler?hl=pt-br
+
+https://github.com/google-research/interpretability-theory
