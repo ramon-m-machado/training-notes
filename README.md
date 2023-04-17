@@ -219,7 +219,8 @@ model.fit(training_images, training_labels, epochs=25, validation_data=(testing_
 loss: 2.2358 - accuracy: 0.1515
 
 ### 2023-04-16
-Tryng to make a resnet (not working yet)
+
+### ResNet50 (not working yet)
 
 #### Using the same simple network as before but with callbacks and an extra layer
 ```python
