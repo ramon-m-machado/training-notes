@@ -211,6 +211,10 @@ model.add(tf.keras.layers.Conv2D(64, (1,1), padding='same', activation='relu'))
 # Output layers
 model.add(tf.keras.layers.Flatten())
 model.add(tf.keras.layers.Dense(10, activation='softmax'))
+
+
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+model.fit(training_images, training_labels, epochs=25, validation_data=(testing_images, testing_labels))
 ```
 loss: 2.2358 - accuracy: 0.1515
 
