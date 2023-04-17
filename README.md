@@ -214,5 +214,40 @@ model.add(tf.keras.layers.Dense(10, activation='softmax'))
 ```
 loss: 2.2358 - accuracy: 0.1515
 
+### 2023-04-16
+Tryng to make a resnet (not working yet)
+
+#### Using the same simple network as before but with callbacks and an extra layer
+```python
+model = tf.keras.models.Sequential()
+
+model = tf.keras.models.Sequential()
+model.add(tf.keras.layers.Conv2D(16, (3,3), activation='relu', input_shape=(size,size,1)))
+model.add(tf.keras.layers.MaxPool2D((2,2)))
+
+model.add(tf.keras.layers.Conv2D(32, (3,3), activation='relu'))
+model.add(tf.keras.layers.MaxPool2D((2,2)))
+
+model.add(tf.keras.layers.Conv2D(64, (3,3), activation='relu'))
+model.add(tf.keras.layers.MaxPool2D((2,2)))
+
+model.add(tf.keras.layers.Conv2D(128, (3,3), activation='relu'))
+model.add(tf.keras.layers.MaxPool2D((2,2)))
+
+model.add(tf.keras.layers.Conv2D(128, (3,3), activation='relu'))
+model.add(tf.keras.layers.MaxPool2D((2,2)))
+
+model.add(tf.keras.layers.Flatten())
+model.add(tf.keras.layers.Dense(1024, activation='relu'))
+model.add(tf.keras.layers.Dense(10, activation='softmax'))
+
+
+callback = tf.keras.callbacks.EarlyStopping(monitor='loss', patience=5, restore_best_weights=True)
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+model.fit(training_images, training_labels, epochs=40, validation_data=(testing_images, testing_labels), callbacks=[callback])
+
+```
+loss: 1.3655 - accuracy: 0.8030
+
 
 
