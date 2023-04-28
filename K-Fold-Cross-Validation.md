@@ -6,6 +6,8 @@
 
 [codebasics](https://www.youtube.com/watch?v=gJo0uNL-5Qw&ab_channel=codebasics)
 
+[colab](https://www.kaggle.com/code/robikscube/cross-validation-visualized-youtube-tutorial/notebook)
+
 * use k fold to have the training and testing indexes
 * for each group of indexes you train using training_data[k_training_indices]
 * save the results
