@@ -16,9 +16,13 @@ https://deepai.org/machine-learning-glossary-and-terms/precision-and-recall
 
 ### Sensitivity and Specificity
 
-* Sensitivity = recall
+* Sensitivity = recall.
+
+Sensitivity measures the proportion of actual positives that are correctly identified as such (tp / (tp + fn)). 
 
 * Specificity = trueNegatives / (trueNegatives + falsePositives)
+
+Specificity measures the proportion of actual negatives that are correctly identified as such (tn / (tn + fp)).
 
 #### Precision, Recall and F-score
 
