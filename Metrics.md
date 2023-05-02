@@ -4,14 +4,33 @@ Top-k accuracy is a metric used in machine learning to evaluate how well a class
 
 I used sparse_top_k_categorical_accuracy cause the labels are integer-encoded
 
+### Precision and Recall
+
+https://deepai.org/machine-learning-glossary-and-terms/precision-and-recall
+
+* Precision = truePositive / (truePositive + falsePositive)
+
+* Recall = truePositive / (truePositive + falseNegative)
+
+![image](https://user-images.githubusercontent.com/86575893/235692142-d6a2665f-a5bb-46e9-8345-35601ad7760f.png)
+
+### Sensitivity and Specificity
+
+* Sensitivity = recall
+
+* Specificity = trueNegatives / (trueNegatives + falsePositives)
+
+#### Precision, Recall and F-score
+
+"Usually, precision and recall scores are given together and are not quoted individually. This is because it is easy to vary the sensitivity of a model to improve precision at the expense of recall, or vice versa."
+
 ### F-Score
-See before:
 
-* precision
-* recall
-* completeness
-* 
+harmonic mean of the precision and recall:
 
+![image](https://user-images.githubusercontent.com/86575893/235695249-aa644d4e-4b76-401e-b51d-f7935bf4e417.png)
+
+*F_beta_score* uses diferrent weigths for precision and recall
 
 F-score is a metric used to evaluate the performance of a binary or multi-class classification model. It is a combination of **precision** and **recall**, which are metrics that measure the **accuracy** and **completeness** of the model's predictions, respectively.
 
